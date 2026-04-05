@@ -1,0 +1,174 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.625rem;
+
+    /* Light theme - water station blue palette */
+    --background: 0.965 0.008 240;
+    --foreground: 0.13 0.02 250;
+    --card: 1 0 0;
+    --card-foreground: 0.13 0.02 250;
+    --popover: 1 0 0;
+    --popover-foreground: 0.13 0.02 250;
+    --primary: 0.46 0.15 242;
+    --primary-foreground: 1 0 0;
+    --secondary: 0.94 0.02 240;
+    --secondary-foreground: 0.25 0.05 245;
+    --muted: 0.94 0.015 240;
+    --muted-foreground: 0.48 0.03 245;
+    --accent: 0.92 0.03 240;
+    --accent-foreground: 0.25 0.05 245;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.88 0.02 240;
+    --input: 0.88 0.02 240;
+    --ring: 0.46 0.15 242;
+
+    /* Chart colors */
+    --chart-1: 0.55 0.19 242;
+    --chart-2: 0.62 0.15 162;
+    --chart-3: 0.72 0.18 85;
+    --chart-4: 0.65 0.22 30;
+    --chart-5: 0.58 0.2 300;
+
+    /* Sidebar */
+    --sidebar: 0.36 0.1 245;
+    --sidebar-foreground: 0.97 0.02 240;
+    --sidebar-primary: 0.46 0.15 242;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.78 0.07 225;
+    --sidebar-accent-foreground: 0.97 0.02 240;
+    --sidebar-border: 0.42 0.08 245;
+    --sidebar-ring: 0.6 0.1 242;
+
+    /* Custom semantic */
+    --success: 0.62 0.15 162;
+    --warning: 0.72 0.18 85;
+    --stockout: 0.577 0.245 27.325;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter", sans-serif;
+  }
+}
+
+/* Sidebar gradient */
+.sidebar-gradient {
+  background: linear-gradient(160deg, #0b5fa8 0%, #1b78c6 60%, #2490e0 100%);
+}
+
+.sidebar-active-pill {
+  background: rgba(215, 236, 255, 0.18);
+  color: #d7ecff;
+}
+
+.sidebar-inactive {
+  color: rgba(215, 236, 255, 0.7);
+}
+
+.sidebar-inactive:hover {
+  background: rgba(215, 236, 255, 0.1);
+  color: #d7ecff;
+}
+
+/* KPI card number */
+.kpi-number {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #111827;
+}
+
+/* Status badges */
+.badge-paid {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.badge-unpaid {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+.badge-pending {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+.badge-delivered {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.badge-cancelled {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #e5e7eb;
+}
+
+.badge-retail {
+  background: #dbeafe;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+}
+
+.badge-company {
+  background: #ede9fe;
+  color: #5b21b6;
+  border: 1px solid #ddd6fe;
+}
+
+.badge-medium {
+  background: #fce7f3;
+  color: #9d174d;
+  border: 1px solid #fbcfe8;
+}
+
+.badge-in {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.badge-out {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+/* Stockout alert */
+.stockout-banner {
+  background: linear-gradient(90deg, #fef2f2, #fee2e2);
+  border: 1px solid #fecaca;
+  color: #7f1d1d;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
