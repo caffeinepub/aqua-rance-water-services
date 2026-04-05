@@ -9,7 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Archive, Disc, Droplets, Package } from "lucide-react";
+import { Archive, Droplets } from "lucide-react";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
 import { useAppState } from "../context/AppStateContext";
@@ -39,28 +39,9 @@ const categoryMeta: Record<
     bg: "bg-amber-50",
     max: 1500,
   },
-  Caps: {
-    label: "Caps",
-    icon: Disc,
-    color: "text-green-600",
-    bg: "bg-green-50",
-    max: 1000,
-  },
-  Seals: {
-    label: "Seals",
-    icon: Package,
-    color: "text-violet-600",
-    bg: "bg-violet-50",
-    max: 1000,
-  },
 };
 
-const CATEGORIES = [
-  "FilledGallons",
-  "EmptyContainers",
-  "Caps",
-  "Seals",
-] as const;
+const CATEGORIES = ["FilledGallons", "EmptyContainers"] as const;
 type Category = (typeof CATEGORIES)[number];
 
 export default function InventoryPage() {
@@ -79,11 +60,11 @@ export default function InventoryPage() {
     const result: Record<string, number> = {
       FilledGallons: 0,
       EmptyContainers: 0,
-      Caps: 0,
-      Seals: 0,
     };
     for (const m of stockMovements) {
-      result[m.category] += m.type === "IN" ? m.quantity : -m.quantity;
+      if (m.category in result) {
+        result[m.category] += m.type === "IN" ? m.quantity : -m.quantity;
+      }
     }
     return result;
   }, [stockMovements]);
@@ -125,7 +106,7 @@ export default function InventoryPage() {
       </div>
 
       {/* Stock Level Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {CATEGORIES.map((cat) => {
           const meta = categoryMeta[cat];
           const stock = currentStock[cat] ?? 0;
